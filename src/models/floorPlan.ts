@@ -20,7 +20,7 @@ export type FloorPlan = {
     // A tour link to give the visual representation of the floor plan
     tourLink: string;
     // The cover image of the floor plan
-    titleImage: Attachment;
+    titleImage?: Attachment;
     // The additional images for the floor plan
     images: Attachment[];
   };

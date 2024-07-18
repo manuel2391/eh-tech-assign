@@ -1,0 +1,14 @@
+.eh-header {
+    height: auto;
+    background-color: white;
+    overflow: hidden;
+    padding: 6px 16px 16px 6px; 
+    box-shadow: 0px 4px 4px #00000040
+}
+
+.eh-logo {
+    width: 263px;
+    height: 28px;
+    float: left;
+    
+}

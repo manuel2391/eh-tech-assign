@@ -30,7 +30,7 @@ export type Property = {
     // The estimated closing date iso string if the property sold today
     estimatedClosingDate: string;
     // The main image of a property
-    titleImage: Attachment;
+    titleImage?: Attachment;
     // The list of images for the property
     images: Attachment[];
     // The image of the lot plat

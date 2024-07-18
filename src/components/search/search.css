@@ -1,0 +1,25 @@
+.search-bar {
+    padding: 10px 8px 10px 8px;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #D0D2D3;
+    border-radius: 50px;
+  }
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    float: left;
+    overflow: hidden;
+}
+
+.search-input {
+    height: 24px;
+    margin-left:8px;
+    
+}
+
+input:focus{
+    outline: none;
+}

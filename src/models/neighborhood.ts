@@ -1,5 +1,6 @@
 import { Amenity } from "./amenity";
 import { Attachment } from "./attachment";
+import { Location } from "./Location";
 
 export type Neighborhood = {
     // The name of the neighborhood

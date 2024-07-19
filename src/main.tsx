@@ -8,6 +8,7 @@ import {
 import App from './App.tsx'
 import './index.css'
 import Properties from './views/properties/properties.tsx'
+import PropertyDetailProvider from './context/propertyDetailContext.tsx'
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <PropertyDetailProvider>
+        <RouterProvider router={router} />
+      </PropertyDetailProvider>
     </QueryClientProvider>
   </React.StrictMode>,
 )

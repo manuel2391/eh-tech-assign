@@ -1,7 +1,7 @@
 import { Attachment } from "./attachment";
 import { FloorPlan } from "./floorPlan";
 import { Neighborhood } from "./neighborhood";
-
+import { Location } from "./Location";
 export type Property = {
     // The address of the house
     streetAddress: string;

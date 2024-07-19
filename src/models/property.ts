@@ -32,7 +32,7 @@ export type Property = {
     // The main image of a property
     titleImage?: Attachment;
     // The list of images for the property
-    images: Attachment[];
+    images?: Attachment[];
     // The image of the lot plat
     plat: Attachment;
     // The floor plan built on the property

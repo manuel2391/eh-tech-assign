@@ -2,9 +2,13 @@ import useGetPropertyDetail from "../../hooks/properties/getPropertyDetailSelect
 import format from "../../utils/format";
 import propertyUtil from "../../utils/propertyUtils";
 import floorPlansIconBlack from "../../assets/floor-plans-icon-black.svg";
-import painbrushIconBlack from "../../assets/paintbrush-icon-black.svg"
+import painbrushIconBlack from "../../assets/paintbrush-icon-black.svg";
+import rulerIcon from "../../assets/ruler-icon.svg";
+import bedIcon from "../../assets/bedroom-icon.svg";
+import bathIcon from "../../assets/bathroom-icon.svg";
 import { PrimaryButton, RadioButton, SecondaryButton } from "../../components/button/buttons";
 import { useState } from "react";
+import ImageSwiper from "../../components/imageSwiper/imageSwiper";
 
 
 
@@ -167,6 +171,70 @@ const PropertyDetail = () => {
         )
     }
 
+    const FloorPlanInfo = ()=> {
+
+        if(!propertyDetailSelected){
+            return <></>
+        }
+
+        return(
+            <>
+                <div className="w-full mt-10">
+                        <p className="text-nowrap text-app-foreground text-2xl font-medium text-center">{propertyUtil.getFloorPlanName(propertyDetailSelected)}</p>
+                    </div>
+                    <div className="w-full flex gap-6" >
+                        <div className="flex flex-none ml-auto">
+                            <img className="size-5 self-center mr-1" src={rulerIcon}/>
+                            <p className="self-center text-app-foreground text-xs"><span className="font-bold">{propertyUtil.getSquareFootMasonry(propertyDetailSelected)}</span> SQT</p>
+                        </div>
+                        <div className="w-auto flex-none">
+                            <hr className="w-px  my-2 mx-auto  h-6 bg-gray-300" />
+                        </div>
+                        <div className="flex flex-none">
+                            <img className="size-5 self-center mr-1" src={bedIcon}/>
+                            <p className="self-center text-app-foreground text-xs"><span className="font-bold">{propertyUtil.getBedsProperty(propertyDetailSelected)}</span> BEDS</p>
+                        </div>
+                        <div className="w-auto flex-none">
+                            <hr className="w-px  my-2 mx-auto  h-6 bg-gray-300" />
+                        </div>
+                        <div className="flex flex-none mr-auto">
+                            <img className="size-5 self-center mr-1" src={bathIcon}/>
+                            <p className="self-center text-app-foreground text-xs" ><span className="font-bold">{propertyUtil.getBathProperty(propertyDetailSelected)}</span> BATHS</p>
+                        </div>
+                    </div>
+
+                    <div className="w-full items-center">
+                        <img  src={propertyUtil.getFloorPlanImage(propertyDetailSelected,floorSelected)}  />
+                        <div className={"w-min mx-auto self-center " + (propertyUtil.getFloorPlanQuantity(propertyDetailSelected) > 1 ? 'block' : 'hidden' )}>
+                            <RadioButton texts={floors} onClick={(text)=>{floorOnClick(text)}} />
+                        </div>
+                    </div>
+
+                    <hr className="w-full mt-10 h-px bg-gray-500" />
+
+                    <div className="w-full ">
+                        <p className={ "text-lg text-center my-3 text-app-foreground  " + (propertyDetailSelected.neighborhood.salesImages != undefined ? 'block' : 'hidden') }>{propertyDetailSelected.neighborhood.name}</p>
+                        <img className={ "mx-auto " + (propertyDetailSelected.neighborhood.salesImages != undefined ? 'block' : 'hidden')} src={propertyUtil.getNeihborhoodSaleImage(propertyDetailSelected)}/>
+                        <p className="text-lg text-center my-3 text-app-foreground">NEIGHBORHOOD LAYOUT</p>
+                        <img className="mx-auto" src={propertyDetailSelected.neighborhood.droneImage.url}/>
+                    </div>
+
+                    <div className={"w-full " + (propertyUtil.getNeihborhoodAdditionalSaleImages(propertyDetailSelected).length > 0 ? "block" : "hidden") }>
+                        <p className="text-lg text-center my-3 text-app-foreground">OTHER NEIGHBORHOOD PHOTOS</p>
+                        <ImageSwiper images={propertyUtil.getNeihborhoodAdditionalSaleImages(propertyDetailSelected)} />
+                    </div>
+
+                    <div className={"w-full " + (propertyUtil.getPropertyImages(propertyDetailSelected).length > 0 ? "block" : "hidden") }>
+                        <p className="text-lg text-center my-3 text-app-foreground">PROPERTY PHOTOS</p>
+                        <ImageSwiper images={propertyUtil.getPropertyImages(propertyDetailSelected)} />
+                    </div>
+                    
+
+
+            </>
+        )
+    }
+
     if(propertyDetailSelected){
         return(
             <>
@@ -178,17 +246,7 @@ const PropertyDetail = () => {
                         <ActionButtons/>
                         <ExtraInfo/>
                     </div>
-
-                    <div className="w-full mt-10">
-                        <p className="text-nowrap text-2xl font-medium text-center">{propertyUtil.getFloorPlanName(propertyDetailSelected)}</p>
-                    </div>
-
-                    <div className="w-full items-center">
-                        <img  src={propertyUtil.getFloorPlanImage(propertyDetailSelected,floorSelected)}  />
-                        <div className="w-min mx-auto self-center">
-                            <RadioButton texts={floors} onClick={(text)=>{floorOnClick(text)}} />
-                        </div>
-                    </div>
+                    <FloorPlanInfo/>
 
 
                 </div>   

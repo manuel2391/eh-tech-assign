@@ -9,6 +9,7 @@ import App from './App.tsx'
 import './index.css'
 import Properties from './views/properties/properties.tsx'
 import PropertyDetailProvider from './context/propertyDetailContext.tsx'
+import PropertyDetail from './views/propertyDetail/propertyDetail.tsx'
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path:"/",
         element: <Properties/>
       },
+      {
+        path:"detail",
+        element: <PropertyDetail/>
+      }
     ]
   }
 ])

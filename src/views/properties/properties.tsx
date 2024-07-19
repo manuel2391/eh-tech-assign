@@ -8,9 +8,10 @@ import PropertyItem from "../../components/propertyItem/propertyItem";
 import useWindow from "../../utils/window";
 import useGetPropertyDetail from "../../hooks/properties/getPropertyDetailSelected";
 import PropertyDetail from "../propertyDetail/propertyDetail";
-
+import { useNavigate } from "react-router-dom";
 
 const Properties = ()=> {
+    const navigate = useNavigate();
     const {propertyDetailSelected,setPropertyDetailSelected} = useGetPropertyDetail()
     const {data} = useGetProperties(); 
     const [propertiesFiltered,setPropertiesFiltered] = useState<Property[]>([]);
@@ -76,7 +77,7 @@ const Properties = ()=> {
         } else {
             setPropertyDetailSelected(property);
             if(windowDimensions.isMobile()){
-                console.log("is mobile")
+                navigate("/detail")
             }else {
                 setShowDetail(true)
             }

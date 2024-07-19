@@ -16,7 +16,7 @@ export type Neighborhood = {
     // The top down image for the neighborhood
     droneImage: Attachment;
     // The images to show off the neighborhoood
-    salesImages: Attachment[];
+    salesImages?: Attachment[];
     // The amenities that the neighborhood has
     amenities?: Amenity[];
     // The main conveniences for the neighborhood

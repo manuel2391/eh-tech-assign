@@ -1,6 +1,7 @@
 import { Property } from "../models/property"
 import utilValidation from "./validations"
 import noImage from "../assets/no-image.svg"
+import { Attachment } from "../models/attachment"
 
 class PropertyUtil {
     
@@ -49,6 +50,22 @@ class PropertyUtil {
 
     getFloorPlanImage = (data: Property, floor:number) : string => {
         return data.floorPlan ? data.floorPlan.images[floor].url : ""
+    }
+    
+    getFloorPlanQuantity = (data:Property) : number => {
+        return data.floorPlan ? data.floorPlan.levels : 1
+    }
+
+    getNeihborhoodSaleImage = (data:Property) : string => {
+        return data.neighborhood.salesImages ? data.neighborhood.salesImages[0].url : "" 
+    }
+
+    getPropertyImages = (data:Property) : Attachment[] => {
+        return data.images ? data.images : [];
+    }
+
+    getNeihborhoodAdditionalSaleImages = (data:Property) : Attachment[] => {
+        return data.neighborhood.salesImages ? data.neighborhood.salesImages.slice(1) : [];
     }
 }
 

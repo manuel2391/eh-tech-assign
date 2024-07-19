@@ -9,12 +9,13 @@ function App() {
   }
   return (
     <>
-      <div className='w-full h-max'>
-        <Header logoOnClick={logoOnClicked}/>
-        <div className='children-container w-full h-full'>
+      <div className='w-full h-screen flex-col'>
+        <div className='w-full h[50]'>
+          <Header logoOnClick={logoOnClicked}/>
+        </div>
+        <div className='children-container w-full  h-full'>
           <Outlet/>
         </div>
-        
       </div>  
     </>
   )

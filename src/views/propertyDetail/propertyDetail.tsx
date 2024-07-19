@@ -238,7 +238,7 @@ const PropertyDetail = () => {
     if(propertyDetailSelected){
         return(
             <>
-                <div className="w-full overflow-hidden ">
+                <div className="w-full h-full overflow-y-auto">
                     <img className="w-full" src={propertyUtil.getTitleImage(propertyDetailSelected)}/>
                     <div className="w-11/12  -mt-8 p-6 relative mx-auto  bg-white rounded-xl shadow-lg shadow-black/70">
                         <BasicInfo/>

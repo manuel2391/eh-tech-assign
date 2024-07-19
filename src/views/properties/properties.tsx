@@ -23,6 +23,12 @@ const Properties = ()=> {
         }
         
     },[data])
+
+    useEffect(()=>{
+        if(windowDimensions.size && windowDimensions.isMobile() && showDetail){
+            setShowDetail(false)
+        }
+    },[windowDimensions])
     
     const [searchValue,setSearchValue] = useState("")
     
@@ -87,26 +93,29 @@ const Properties = ()=> {
 
     return(
         <>
-            <div className="w-full flex gap-4">
-                <div className={showDetail ? 'w-1/2' : 'w-full' + " "}>
+            <div className="w-full flex gap-4 h-full">
+                <div className={(showDetail ? 'w-1/2' : 'w-full') + " "}>
                     <div className="search-container w-full">
                         <Search onSearch={onSearch} value={searchValue} placeholder="Search by Street, Neighborhood, City, Floor Plan"/>
                     </div>
-                    <div className={"item-container w-full grid grid-cols-1 gap-4" + (showDetail ? ' md:grid-cols-2' : ' md:grid-cols-4')}>
-                        {
-                            propertiesFiltered.map((property)=> 
-                                <PropertyItem 
-                                    key={property.streetAddress}
-                                    data={property} 
-                                    selected={property.streetAddress == propertyDetailSelected?.streetAddress}
-                                    onClick={onPropertyClick}
-                                />
-                            )
-                        }
+                    <div className="w-full h-full overflow-y-auto ">
+                        <div className={"item-container w-full grid grid-cols-1 gap-4 " + (showDetail ? ' md:grid-cols-2' : ' md:grid-cols-4')}>
+                            {
+                                propertiesFiltered.map((property)=> 
+                                    <PropertyItem 
+                                        key={property.streetAddress}
+                                        data={property} 
+                                        selected={property.streetAddress == propertyDetailSelected?.streetAddress}
+                                        onClick={onPropertyClick}
+                                    />
+                                )
+                            }
+                        </div>
                     </div>
                     
+                    
                 </div>
-                <div className={showDetail ? 'w-1/2 ' : 'hidden'} >
+                <div className={(showDetail ? 'w-1/2 ' : 'hidden') + " h-full"} >
                     <PropertyDetail/>
                 </div>
             </div>
